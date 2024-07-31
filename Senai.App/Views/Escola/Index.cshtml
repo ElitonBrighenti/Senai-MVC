@@ -1,0 +1,31 @@
+﻿@using Senai.Domain.Entidades
+@{
+    var escolas = (List<Escola>)ViewBag.Escolas;
+}
+
+<a type="button" asp-action="Form" asp-controller="Escola" class="btn btn-primary">Novo</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome Escola</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var escola in escolas)
+            {
+                <tr>
+                    <td>@escola.Id</td>
+                    <td>@escola.Nome</td>
+                    <td width="30">
+                        <a href="Escola/Remover?id=@escola.Id" alt="Editar"><i class="bi bi-pencil"></i></a>&nbsp;
+                        <a href="Escola/Remover?id=@escola.Id" alt="Excluir"><i class="bi bi-trash"></i></a>
+                    </td>                
+                </tr>
+            }
+        }
+    </tbody>
+</table>
